@@ -13,6 +13,6 @@ https://developers.google.com/sheets/api/guides/values#python
 ```
 
 # Settings
-![add](./assets/add.png)
-![oauth](./assets/oauth.png)
-![oauthsettings](./assets/oauthsettings.png)
+![add](./assets/add.PNG)
+![oauth](./assets/oauth.PNG)
+![oauthsettings](./assets/oauthsettings.PNG)
