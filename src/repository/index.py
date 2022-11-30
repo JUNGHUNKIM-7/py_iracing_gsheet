@@ -1,5 +1,3 @@
-from datetime import datetime
-
 import os.path
 from typing import Any
 
@@ -9,7 +7,8 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
-from src.model.index import O, Mapper, Result
+from src.model.index import O
+from src.model.utils import Mapper, Result
 
 
 class Repository:
@@ -48,7 +47,6 @@ class Repository:
             return Mapper.new({
                 "cols": cols,
                 "rows": rows,
-                "created": datetime.today()
             })
         except HttpError as err:
             raise Exception(err)
@@ -67,12 +65,12 @@ class Repository:
 
             # Additional rows
             if m.rows is not None and m.cols is not None:
-                len_of_rows = len(m.rows[0].vals)
+                len_of_rows = len(m.rows[0].elems)
                 len_of_cols = len(m.cols[0])
                 assert len_of_rows != len_of_cols, "len of rows & cols are not matched"
 
                 O.SAMPLE_RANGE_NAME = f'A1:{chr(65+len_of_rows-1)}{len_of_rows}'
-                shuoldUpdate = [(r.vals) for r in m.rows]
+                shuoldUpdate = [(r.elems) for r in m.rows]
                 cols_plus_rows = [m.cols, *shuoldUpdate]
 
             # Additional ranges to update ...

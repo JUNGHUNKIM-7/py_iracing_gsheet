@@ -2,7 +2,7 @@ from enum import Enum, auto
 
 from googleapiclient.errors import Error, HttpError
 
-from src.model.index import Result
+from src.model.utils import Result
 from src.repository.index import O, Repository
 
 
@@ -37,8 +37,6 @@ class Handler:
                             # may export to another file? Write iracing data -> sheet -> read data -> another file
                             print(result)
                             return
-                        raise Exception(
-                            'result is None! nothing values to convert to Result@dcls')
                     case RWMode.W:
                         self.r.write(m)
             except Exception as e:
