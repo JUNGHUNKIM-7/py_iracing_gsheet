@@ -33,8 +33,8 @@ SUB_PATH = str(datetime.today()).split(
 
 SO = ScraperOptions(
     webdriver_path=f"{Path.home()}\\downloads\\msedgedriver.exe",
-    user_name="automanix1@kakao.com",
-    password="iracing",
+    user_name=None,
+    password=None,
     url="https://www.iracing.com/",
     result_url=None,
     output_csv_path=f"{Path.home()}\\downloads\\eventresult_{SUB_PATH}.csv"
