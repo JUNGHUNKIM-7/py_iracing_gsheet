@@ -17,7 +17,6 @@ class RunType(Enum):
     parse = auto()
     googleapi = auto()
 
-
 class Program:
     # func 1 -> Scarape all datas
     @classmethod
@@ -41,7 +40,6 @@ class Program:
             raise Exception(e)
 
     # func 2 -> GOOGLESHEET
-
     @classmethod
     def send_to_Gsheet(cls):
         # Input = api -> map data -> mapper for csv
