@@ -7,8 +7,8 @@ from typing import Optional
 @dataclass
 class Options():
     SCOPES: list[str]
-    SAMPLE_SPREADSHEET_ID: Optional[str]
-    SAMPLE_RANGE_NAME: Optional[str]
+    SAMPLE_SPREADSHEET_ID: Optional[str] = None
+    SAMPLE_RANGE_NAME: Optional[str] = None
 
 
 @dataclass
@@ -16,16 +16,14 @@ class ScraperOptions():
     webdriver_path: str
     output_csv_path: str
     url: str
-    result_url: Optional[str]
-    user_name: Optional[str]
-    password: Optional[str]
+    result_url: Optional[str] = None
+    user_name: Optional[str] = None
+    password: Optional[str] = None
 
 
 # const - Option Variables
 O = Options(
     SCOPES=['https://www.googleapis.com/auth/spreadsheets'],
-    SAMPLE_SPREADSHEET_ID=None,
-    SAMPLE_RANGE_NAME=None,  # 2d box(range) in excel sheet
 )
 
 SUB_PATH = str(datetime.today()).split(
@@ -33,10 +31,7 @@ SUB_PATH = str(datetime.today()).split(
 
 SO = ScraperOptions(
     webdriver_path=f"{Path.home()}\\downloads\\msedgedriver.exe",
-    user_name=None,
-    password=None,
     url="https://www.iracing.com/",
-    result_url=None,
     output_csv_path=f"{Path.home()}\\downloads\\eventresult_{SUB_PATH}.csv"
 )
 

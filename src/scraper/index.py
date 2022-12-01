@@ -30,8 +30,8 @@ class Scraper(webdriver.WebDriver):
             'excludeSwitches', ['enable-logging'])
         self.wait_or_timeout = WebDriverWait(self, 10)
 
-    def access(self, path: str):
-        self.get(path)
+    def access(self):
+        self.get(self.o.url)
 
         decline_cookie: WebElement = self.wait_or_timeout.until(EC.element_to_be_clickable(
             (By.CLASS_NAME,  LocationVariables.decline_cookie.value)))

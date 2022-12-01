@@ -10,9 +10,9 @@ class Row:
 
 @dataclass
 class Result:
-    cols: Optional[list[str]]
-    rows: Optional[list[Row]]
     created: datetime | str
+    cols: Optional[list[str]] = None
+    rows: Optional[list[Row]] = None
 
 
 class Mapper:

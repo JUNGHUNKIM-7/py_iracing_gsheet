@@ -2,9 +2,9 @@ from enum import Enum, auto
 
 from googleapiclient.errors import HttpError
 
-from src.model.index import demo, SO
+from src.model.index import SO, demo
 from src.model.utils import Mapper
-from src.repository.handler import Handler, RWMode
+from src.repository.handler import GsheetHandler, RWMode
 from src.scraper.index import FileControllers, Scraper
 
 # TODO:
@@ -16,6 +16,7 @@ from src.scraper.index import FileControllers, Scraper
 class RunType(Enum):
     parse = auto()
     googleapi = auto()
+
 
 class Program:
     # func 1 -> Scarape all datas
@@ -33,7 +34,7 @@ class Program:
         s = Scraper(so)
         f = FileControllers(so)
         try:
-            s.access(so.url)
+            s.access()
             s.parse_result()
             f.dump_csv()
         except Exception as e:
@@ -45,7 +46,7 @@ class Program:
         # Input = api -> map data -> mapper for csv
         m = Mapper.new(demo)  # <- change real mock here
         if m.cols is not None and m.rows is not None:
-            h = Handler()
+            h = GsheetHandler()
             try:
                 h.new_sheet(m)
                 h.writer_reader(type=RWMode.W, m=m)

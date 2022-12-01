@@ -11,7 +11,7 @@ class RWMode(Enum):
     R = auto()
 
 
-class Handler:
+class GsheetHandler:
     def __init__(self) -> None:
         self.r = Repository()
 
